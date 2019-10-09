@@ -1,0 +1,12 @@
+#注册中心实例1#
+server:
+  port: 1111
+
+eureka:
+  instance:
+    hostname: peer1
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://peer2:1112/eureka/

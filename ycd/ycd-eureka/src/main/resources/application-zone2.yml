@@ -1,0 +1,22 @@
+#注册中心实例1#
+server:
+  port: 1112
+
+spring:
+  application:
+    name: eureka-server2
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    preferSameZoneEureka: true
+    region: china
+    availability-zones:
+          china : zone-2,zone-1
+    serviceUrl:
+      zone-1: http://localhost:1111/eureka/
+      zone-2: http://localhost:1112/eureka/

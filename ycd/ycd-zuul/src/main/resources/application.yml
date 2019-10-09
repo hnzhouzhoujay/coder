@@ -1,0 +1,48 @@
+spring:
+  application:
+      name: zuul-server
+server:
+  port: 10002
+
+
+zuul:
+  #取消自动服务名创建
+  ignoredServices: '*'
+  routes:
+      hello:
+        path: /hello/**
+        serviceId: HELLO-SERVICE
+
+
+#hystrix超时时间,这个时间要大于ribbon的超时时间才会触发重试.
+hystrix:
+    command:
+      default:
+         execution:
+             isolation:
+                 thread:
+                   timeoutInMilliseconds: 3000
+
+ribbon:
+#建立连接超时时间
+  ConnectTimeout: 500
+#等待处理响应超时时间
+  ReadTimeout: 1000
+  OkToRetryOnAllOperations: true
+  MaxAutoRetriesNextServer: 2
+  MaxAutoRetries: 1
+
+#配置eureka ,使用服务id
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    preferSameZoneEureka: true
+    region: china
+    availability-zones:
+          china: zone-1,zone-2
+    serviceUrl:
+      zone-1: http://localhost:1111/eureka/
+      zone-2: http://localhost:1112/eureka/
+
+

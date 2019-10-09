@@ -1,0 +1,17 @@
+server:
+  port: 8001
+
+eureka:
+  instance:
+    metadata-map:
+      zone : zone-1
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    preferSameZoneEureka: true
+    region: china
+    availability-zones:
+          china: zone-1,zone-2
+    serviceUrl:
+      zone-1: http://localhost:1111/eureka/
+      zone-2: http://localhost:1112/eureka/
