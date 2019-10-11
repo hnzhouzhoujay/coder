@@ -88,7 +88,7 @@ public class BST<E extends Comparable> {
                middleNode.left=node.left;
                //删除右子树最小的
                middleNode.right=removeMin(node.right);
-               size--;
+//               size--; 这里在removmin时已经减1了
                node.right=node.left=null;
            }
         }
